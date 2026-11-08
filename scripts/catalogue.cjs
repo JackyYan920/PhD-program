@@ -1,0 +1,12 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const C=require(path.join(root,'core.js'));
+for(const file of ['data.js','enrichment-original.js','data-broad.js','data-more-a.js','data-more-b.js','data-more-c.js'])require(path.join(root,file));
+const records=require(path.join(root,'catalogue.js'))(C,COMPASS_SEEDS,COMPASS_ENRICHMENT,[COMPASS_BROAD_SEEDS,COMPASS_MORE_A,COMPASS_MORE_B,COMPASS_MORE_C]);
+const escape=value=>String(value).replaceAll('|','\\|').replaceAll('\n',' ');
+const rows=records.slice().sort((a,b)=>a.discipline.localeCompare(b.discipline,'zh-CN')||a.name.localeCompare(b.name)).map(r=>`| ${escape(r.discipline)} | [${escape(r.name)}](${r.sources[0]?.url||r.contact.url}) | ${escape(r.university)} | [官方联系入口](${r.contact.url})${r.contact.email?' · '+escape(r.contact.email):' · 邮箱未公开核实'} | ${r.students.records.length} | ${r.publications.length} |`);
+const publications=records.reduce((n,r)=>n+r.publications.length,0),students=records.reduce((n,r)=>n+r.students.records.length,0);
+const content=`# 公共候选目录\n\n查阅日期：2026-11-08。共 ${records.length} 位研究人员，覆盖 ${new Set(records.map(r=>r.discipline)).size} 个学科分类，选列 ${publications} 项近年研究成果与 ${students} 条公开指导关系。分类覆盖不等于全球导师资料完整；没有公开学生或个人资金证据时保持未知。\n\n本目录的“指导条目”可能是博士、本科、共同指导或委员会关系，不能作为完整招生名单；具体角色、年份和依据见网站详情。成果包括专著、章节、论文及创作等，只知年份的日期边界条目单列核实。\n\n| 学科 | 研究人员与资料 | 大学 | 公开联系方式 | 指导条目 | 成果选列 |\n| --- | --- | --- | --- | ---: | ---: |\n${rows.join('\n')}\n\n资料仅供筛选起点，项目入口、当前名额与资金须对应目标年度确认。个人申请背景、笔记和备份不在此目录。\n`;
+fs.writeFileSync(path.join(root,'CATALOGUE.md'),content);
+process.stdout.write(JSON.stringify({candidates:records.length,disciplines:new Set(records.map(r=>r.discipline)).size,publications,students,publicEmails:records.filter(r=>r.contact.email).length})+'\n');

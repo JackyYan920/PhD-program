@@ -1,0 +1,37 @@
+name: Deploy PhD Compass to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check application behavior
+        run: npm run check
+      - name: Prepare public files only
+        run: |
+          mkdir -p dist/assets
+          cp index.html styles.css app.js core.js catalogue.js data.js data-broad.js data-more-a.js data-more-b.js data-more-c.js enrichment-original.js ui-extended.js literature.js .nojekyll dist/
+          cp assets/compass.svg dist/assets/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

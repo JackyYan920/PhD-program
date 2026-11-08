@@ -1,0 +1,8 @@
+node_modules/
+dist/
+artifacts/
+*.zip
+*backup*.json
+*unreadable*.json
+.DS_Store
+Thumbs.db

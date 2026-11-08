@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#163d36">
+  <meta name="description" content="PhD Compass：面向全人文社科申请的导师筛选、官网核验和套磁管理工作台。">
+  <title>PhD Compass · 找到你的研究同路人</title>
+  <link rel="icon" type="image/svg+xml" href="assets/compass.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="enrichment-original.js"></script>
+  <script defer src="data-broad.js"></script>
+  <script defer src="data-more-a.js"></script>
+  <script defer src="data-more-b.js"></script>
+  <script defer src="data-more-c.js"></script>
+  <script defer src="core.js"></script>
+  <script defer src="catalogue.js"></script>
+  <script defer src="literature.js"></script>
+  <script defer src="ui-extended.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <aside class="sidebar">
+    <a href="#discover" class="brand"><img src="assets/compass.svg" alt="" width="38" height="38"><span>PhD Compass<small>让研究兴趣，找到方向</small></span></a>
+    <div class="workspace-label">MY APPLICATION WORKSPACE</div>
+    <nav aria-label="主要导航">
+      <a href="#discover" data-nav="discover"><span class="nav-icon">⌕</span>发现导师<span class="nav-count" id="nav-total">32</span></a>
+      <a href="#saved" data-nav="saved"><span class="nav-icon">☆</span>我的候选<span class="nav-count" id="nav-saved">0</span></a>
+      <a href="#outreach" data-nav="outreach"><span class="nav-icon">↗</span>套磁与跟进<span class="nav-dot" id="due-dot" hidden></span></a>
+      <a href="#assessment" data-nav="assessment"><span class="nav-icon">◈</span>背景与综合评估</a>
+      <a href="#research" data-nav="research"><span class="nav-icon">◎</span>官网检索</a>
+      <a href="#guide" data-nav="guide"><span class="nav-icon">▤</span>使用与数据</a>
+    </nav>
+    <div class="sidebar-card"><span class="small-label">你的研究坐标</span><h3>Humanities<br>& Social Sciences</h3><div id="sidebar-topics"></div><button type="button" class="text-btn light" data-action="profile">调整研究偏好 <span>↗</span></button></div>
+    <div class="sidebar-bottom"><span class="local-dot"></span><span>个人工作台<small>记录保存在此浏览器</small></span><button type="button" class="icon-btn" data-action="backup" aria-label="备份数据" title="备份数据">↓</button></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><div class="breadcrumb">申请工作台 <span>/</span> <strong id="breadcrumb">发现导师</strong></div><div class="top-actions"><span class="local-pill">● 本地保存</span><button class="button small secondary" type="button" data-action="backup">↓ 导出备份</button><span class="avatar" aria-label="个人工作台">P</span></div></header>
+    <main id="main" tabindex="-1"></main>
+    <footer>PhD Compass <span>·</span> 少一点信息迷雾，多一点研究共鸣。<a href="#guide">数据与功能说明 ↗</a></footer>
+  </div>
+  <div id="compare-bar" class="compare-bar" hidden></div>
+  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="storage-warning" class="storage-warning" role="alert" hidden></div>
+  <noscript>请启用 JavaScript，才能筛选导师及保存申请记录。官网资料入口也可以从 README 查看。</noscript>
+</body>
+</html>

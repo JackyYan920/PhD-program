@@ -2,7 +2,7 @@
 
 面向全人文社会科学申请的导师检索、公开证据核验与申请准备工作台。从本科专业、研究问题、方法训练、发表、学术联系和推荐信准备情况出发，逐项查看匹配线索、申请限制和待确认问题。
 
-**适用学科范围不等于数据库已收录全部导师。** 当前精选起点包含 14 位研究人员，覆盖国际关系、政治学、法学、历史学、哲学、社会学、语言学、心理学、经济学、教育学与人类学。其他领域可通过自定义关键词、官网检索及自建导师扩充。
+**适用学科范围不等于数据库已收录全部导师。** 当前精选起点包含 32 位研究人员，29 个学科分类均有实际记录；文学、法学、传播、地理、考古、宗教、艺术、音乐、社会工作、图书情报、管理与文化研究等也已录入。完整名单与官网入口见 [公共候选目录](CATALOGUE.md)，仍可通过关键词、官网检索和自建导师扩充。
 
 ## 打开与使用
 
@@ -65,7 +65,7 @@ CSV 含扩展公开资料和申请记录，不保证保留完整结构及全部�
 - **Emma Aisbett**：[ANU 研究门户](https://researchportalplus.anu.edu.au/en/persons/emma-aisbett/)列有 2026–2029 在研项目，能否分配给新学生未确认。
 - **Abraham Newman**：[Government FAQ](https://government.georgetown.edu/ph-d-in-government/graduate-admissions/faqs/)发布的是项目政策，不是导师个人经费或某位申请者的 offer。
 
-新增候选包括 Jill Lepore、Amia Srinivasan、Ozan Aksoy、Alexandra D’Arcy、Nick Haslam、Esther Duflo、Kalwant Bhopal 和 Anna L. Tsing。合计选列 31 项成果，仍须按实际日期窗口区分。联系方式、学生关系、成果和 funding 均有独立来源及不确定性说明。Jill Lepore 所列为办公室处理的公开联系邮箱，并非私人邮箱。
+新增候选的完整名单及成果数量见 [公共候选目录](CATALOGUE.md)，仍须按实际日期窗口区分。联系方式、学生关系、成果和 funding 均有独立来源及不确定性说明。Jill Lepore 所列为办公室处理的公开联系邮箱，并非私人邮箱；Michael Kenny 保留官方联系入口，没有猜测未公开的邮箱。
 
 ## GitHub 与发布
 
@@ -84,6 +84,8 @@ CSV 含扩展公开资料和申请记录，不保证保留完整结构及全部�
 npm run check
 ```
 
+也可直接运行 `node scripts/check.cjs`，无需 npm。自动研究匹配使用所选标签与逗号分隔的关键词，整段研究陈述供人工比较与检索，不声称已完成语义理解。导师回复与兴趣信号需要填写对应导师全名，不会应用到其他候选。
+
 没有第三方运行依赖，不需要 `npm install`。最新检查结果及浏览器验证范围见 `VALIDATION.md`。
 
 | 文件 | 用途 |
@@ -91,6 +93,9 @@ npm run check
 | `data.js` | 原有六位公共线索 |
 | `enrichment-original.js` | 原候选的联系、学生、资金、成果及招生补充；来源须追加保留 |
 | `data-broad.js` | 新增跨学科候选和证据 |
+| `data-more-a.js` / `data-more-b.js` / `data-more-c.js` | 补齐其他学科的真实候选与证据 |
+| `catalogue.js` | 网页与验证共用的公共候选合并与校验 |
+| `CATALOGUE.md` | 完整候选名单，可通过 `node scripts/catalogue.cjs` 重新生成 |
 | `core.js` | 数据清理、旧数据兼容、筛选、日期窗口和解释性评估 |
 | `ui-extended.js` | 背景表单、资料补充、成果和评估展示 |
 | `literature.js` | 用户主动触发的 Crossref 查询与解析 |
