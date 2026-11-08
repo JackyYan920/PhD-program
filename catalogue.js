@@ -2,7 +2,7 @@
 (function(root, factory) {
   if (typeof module !== 'undefined' && module.exports) module.exports = factory;
   else root.COMPASS_CATALOGUE = factory(root.Compass, root.COMPASS_SEEDS, root.COMPASS_ENRICHMENT,
-    [root.COMPASS_BROAD_SEEDS, root.COMPASS_MORE_A, root.COMPASS_MORE_B, root.COMPASS_MORE_C]);
+    [root.COMPASS_BROAD_SEEDS, root.COMPASS_MORE_A, root.COMPASS_MORE_B, root.COMPASS_MORE_C, root.COMPASS_DIRECTORY]);
 })(globalThis, function(C, original = [], enrichment = {}, groups = []) {
   const combined = original.map(record => {
     const patch = enrichment[record.id] || {};

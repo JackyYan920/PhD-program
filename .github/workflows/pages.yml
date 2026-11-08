@@ -26,7 +26,7 @@ jobs:
       - name: Prepare public files only
         run: |
           mkdir -p dist/assets
-          cp index.html styles.css app.js core.js catalogue.js data.js data-broad.js data-more-a.js data-more-b.js data-more-c.js enrichment-original.js ui-extended.js literature.js .nojekyll dist/
+          cp index.html styles.css app.js core.js catalogue.js data.js data-broad.js data-more-a.js data-more-b.js data-more-c.js data-directory.js enrichment-original.js ui-extended.js literature.js DIRECTORY_SOURCES.md .nojekyll dist/
           cp assets/compass.svg dist/assets/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
